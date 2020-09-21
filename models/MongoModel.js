@@ -7,22 +7,24 @@ class MongoModel extends BaseModel{
         super()
     }
 
-    insertData(timestamp,os,browser){
-        mongo.addLog(timestamp,os,browser)
+    async insertData(timestamp,os,browser){
+        var docs = await mongo.addLog(timestamp,os,browser)
             .then((docs) => {
-                console.log(docs)
+                return docs
             }).catch((err) => {
                 console.log(err)
             })
+        return docs
     }
 
-    getData(){
-        mongo.getLogs()
+    async getData(){
+        var docs = await mongo.getLogs()
             .then((docs) => {
-                console.log(docs)
+                return docs
             }).catch((err) => {
                 console.log(err)
             })
+        return docs
     }
 }
 

@@ -1,15 +1,7 @@
 var config = require('../config')
+var MongoModel = require('./MongoModel')
 
-class Model extends config.database{
+var Model = config.database
 
-    constructor(){
-        super()
-    }
-
-    /*
-        Doesn't require implementation for any other database
-         because it can just use its parent class's methods
-    */
-}
 
 module.exports = Model

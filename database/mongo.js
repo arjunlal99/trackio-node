@@ -8,7 +8,6 @@ require('dotenv').config({path:'../.env'})
 var conn = mongoose.createConnection(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true})
 conn.once('open', () => {
     console.log('MongoDB Connection Succesful')
-    getLogs().then(docs => console.log(docs)).catch(err => console.log(err))
 })
 
 //Schema of log to be stored in the database
