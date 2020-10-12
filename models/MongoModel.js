@@ -7,8 +7,8 @@ class MongoModel extends BaseModel{
         super()
     }
 
-    async insertData(timestamp,os,browser){
-        var docs = await mongo.addLog(timestamp,os,browser)
+    async insertData(timestamp,os,browser,trackio_uuid){
+        var docs = await mongo.addLog(timestamp,os,browser,trackio_uuid)
             .then((docs) => {
                 return docs
             }).catch((err) => {
