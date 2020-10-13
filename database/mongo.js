@@ -92,15 +92,46 @@ var uuidModel = uuid_conn.model('uuid', uuidSchema)
 
 function hasVisited(uuid){
 
+    return new Promise((resolve,reject) => {
+        uuidModel.find({uuid: uuid}, (err, docs) => {
+            if (err){
+                /*
+                    Add error handling later
+                */
+                console.log(err)
+            }
+            if (docs === []){
+                return reject(false)
+            }
+            else{
+                resolve(docs)
+            }
+        })
+    })
 
 }
 
 
 /*
     Function to add the visitCount of a particular uuid by one.
+
+    Checks if the uuid is present using hasVisited function.
+
+    If present then add increase its visitCount by one, else create a new entry for the uuid with visitCount 1
+
 */
 function addCount(uuid){
+    hasVisited(uuid).then((docs) => {
+        /*
+            Condition if the uuid has visited before, then update its visitCount by one
+        */
+        
 
+    }).catch(() => {
+        /*
+            Condition if the uuid has never visited before, then create a new etry
+        */
+    })
 
 }
 
